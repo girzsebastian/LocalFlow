@@ -146,7 +146,11 @@ import UniformTypeIdentifiers
         NSApp.windows.first(where: { !($0 is NSPanel) })?.makeKeyAndOrderFront(nil)
     }
     func writeDiagnostics() {
-        let data: [String: Any] = ["version": "0.2", "accessibility": AXIsProcessTrusted(), "microphone": AVCaptureDevice.authorizationStatus(for: .audio).rawValue, "modelInstalled": FileManager.default.fileExists(atPath: WhisperTranscription.model.path), "date": ISO8601DateFormatter().string(from: Date())]
+        // Read from the bundle rather than hardcoding: the literal that used to
+        // sit here said "0.2" through two releases, so every diagnostics file a
+        // user sent reported the wrong version.
+        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unknown"
+        let data: [String: Any] = ["version": version, "accessibility": AXIsProcessTrusted(), "microphone": AVCaptureDevice.authorizationStatus(for: .audio).rawValue, "modelInstalled": FileManager.default.fileExists(atPath: WhisperTranscription.model.path), "date": ISO8601DateFormatter().string(from: Date())]
         if let json = try? JSONSerialization.data(withJSONObject: data, options: .prettyPrinted) { try? json.write(to: root.appendingPathComponent("diagnostics.json"), options: .atomic) }
     }
     func openAccessibilitySettings() {
