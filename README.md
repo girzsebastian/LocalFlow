@@ -11,11 +11,25 @@ There is no transcription subscription and no account required. Speech recogniti
 **[⬇ Download for Apple Silicon](https://github.com/girzsebastian/LocalFlow/releases/latest)** · [Build from source](#build-from-source) · [How it works](#how-it-works) · [Contributing](CONTRIBUTING.md)
 
 <!--
-  DEMO SLOT — the single highest-impact thing left in this README.
-  Record ~15s: cursor in a text field, hold the shortcut, speak, release, text appears.
-  Save it to docs/media/demo.gif and replace this comment with:
-  ![LocalFlow dictating into a text field](docs/media/demo.gif)
+  Screenshots. Run ./scripts/capture-screenshots.sh — it walks through the five
+  shots below, names them and downscales them. The references are already here,
+  so they appear the moment the files exist.
+
+  Still missing and worth more than all of them: a ~15s GIF of a real dictation.
+  Cursor in a text field, hold the shortcut, speak, release, text appears. No
+  cuts, no speed-up — the honest latency is the selling point. Issue #5.
 -->
+
+![LocalFlow's library of dictations and meeting notes](docs/images/library.png)
+
+## What it looks like
+
+| | |
+| --- | --- |
+| ![The floating widget during a dictation](docs/images/widget-recording.png) | ![A Notetaker entry with speaker labels](docs/images/notetaker.png) |
+| Hold the shortcut and the widget shows the waveform; release and the text lands where your cursor is. | Notetaker keeps microphone and computer audio apart, labelled **You** and **Meeting participants**. |
+| ![Settings](docs/images/settings.png) | ![The personal dictionary](docs/images/dictionary.png) |
+| Shortcut, audio, privacy and Notetaker behaviour. | Your own vocabulary, so names and jargon come out spelled the way you write them. |
 
 ## Why LocalFlow exists
 
