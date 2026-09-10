@@ -157,3 +157,9 @@ twenty contributors later it is not collectable at all.
 
 Nothing you contribute can be removed from the MIT-licensed version. What is
 public stays public under MIT, permanently.
+
+**Note for the maintainer:** the bot only sees pull requests. A patch applied by
+hand from an issue, an email or a fork bypasses it entirely and lands unsigned
+code in the history — which is exactly the hole the agreement exists to close.
+Route contributions through pull requests, or collect the signature before
+committing.

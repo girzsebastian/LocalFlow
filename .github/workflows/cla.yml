@@ -36,8 +36,9 @@ jobs:
           path-to-signatures: .github/cla-signatures.json
           path-to-document: https://github.com/girzsebastian/LocalFlow/blob/main/CLA.md
           branch: main
-          # Dependabot bumps version strings; there is no authorship to license.
-          allowlist: girzsebastian,dependabot[bot]
+          # Dependabot bumps version strings and github-actions writes the
+          # signature file itself; neither carries authorship to license.
+          allowlist: girzsebastian,dependabot[bot],github-actions[bot]
           custom-notsigned-prcomment: >
             Thanks for the pull request. Before it can be merged, please read
             [CLA.md](https://github.com/girzsebastian/LocalFlow/blob/main/CLA.md)

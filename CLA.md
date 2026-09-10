@@ -27,6 +27,25 @@ Signing now keeps that door open. It does not commit the project to walking
 through it, and **nothing you contribute can be taken out of the MIT-licensed
 version** — what is already public stays public under MIT, permanently.
 
+## Copyright in the existing code
+
+Every commit in this repository before the first signed contribution is the work
+of the maintainer, **Girz Sebastian** ([@girzsebastian](https://github.com/girzsebastian)),
+who is therefore the sole copyright holder of the pre-existing work.
+
+Two git identities appear in the history and both are his:
+
+| Name in git | Email |
+|---|---|
+| `Sebastian \| xbyseb` | `57954621+girzsebastian@users.noreply.github.com` |
+| `Girz Sebastian` | `girzsebastian@Girzs-MacBook-Pro.local` |
+
+The second is a locally-derived address that GitHub does not attribute to an
+account, so it is recorded here explicitly rather than left to be inferred.
+
+Commits by `dependabot[bot]` change dependency version strings and carry no
+authorship.
+
 ## Agreement
 
 By signing, you accept the terms below for your past and future contributions to
