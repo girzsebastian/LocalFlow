@@ -95,7 +95,7 @@ struct ContentView: View {
                     Button("Save as note") { let e = Entry(title: "Scratchpad · \(Date().formatted(date: .abbreviated, time: .shortened))", kind: "Notetaker", transcript: s.preferences.scratchpad); s.entries.insert(e, at: 0); s.selection = e.id; s.page = "Notetaker"; s.save() }.disabled(s.preferences.scratchpad.isEmpty)
                 case "Snippets":
                     Text("Expand spoken phrases into reusable text. One rule per line.").font(.headline)
-                    Text("Example: my signature => Sebastian, Oryntech\nRules apply after transcription, matching whole phrases.").foregroundStyle(.secondary)
+                    Text("Example: my signature => Jane Doe, Acme\nRules apply after transcription, matching whole phrases.").foregroundStyle(.secondary)
                     editor($s.preferences.snippets)
                 case "Dictionary":
                     Text("Teach transcription your names and specialist words.").font(.headline)

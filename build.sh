@@ -8,5 +8,9 @@ cp Info.plist "$APP/Contents/Info.plist"
 # Keep a stable designated requirement between local builds. Without it, an
 # ad-hoc signature defaults to the executable's changing CDHash and macOS can
 # leave a stale Accessibility entry enabled for the previous build.
-codesign --force --sign - --requirements '=designated => identifier "com.oryntech.localflow"' "$APP"
+#
+# This identifier must stay identical to CFBundleIdentifier in Info.plist.
+# macOS keys the Accessibility grant on the pair, so changing one alone makes
+# every rebuild look like a different app.
+codesign --force --sign - --requirements '=designated => identifier "io.github.girzsebastian.localflow"' "$APP"
 echo "$APP"

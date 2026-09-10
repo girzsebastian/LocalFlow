@@ -36,6 +36,20 @@ jobs:
           plutil -lint build/LocalFlow.app/Contents/Info.plist
           codesign --verify --verbose build/LocalFlow.app
 
+      # macOS keys the Accessibility grant on the bundle identifier together
+      # with the signature's designated requirement. If the two drift apart,
+      # every rebuild looks like a different app and the user has to re-grant
+      # it — a failure nobody notices until they are mid-dictation.
+      - name: Bundle identifier matches the signing requirement
+        run: |
+          plist=$(/usr/libexec/PlistBuddy -c "Print CFBundleIdentifier" Info.plist)
+          script=$(grep -o 'identifier "[^"]*"' build.sh | sed 's/identifier "//; s/"//')
+          signed=$(codesign -d -r- build/LocalFlow.app 2>&1 | grep -o 'identifier "[^"]*"' | sed 's/identifier "//; s/"//')
+          echo "Info.plist: $plist"
+          echo "build.sh:   $script"
+          echo "signature:  $signed"
+          test "$plist" = "$script" && test "$plist" = "$signed"
+
   core-windows:
     # LocalFlow has no Windows app yet. What this job proves is that the
     # portable half stays portable: the moment someone reaches for an Apple

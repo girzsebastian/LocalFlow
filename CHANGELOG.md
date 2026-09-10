@@ -6,6 +6,15 @@ and versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed
+
+- **You will be asked to allow LocalFlow again, once.** The bundle identifier moved from `com.oryntech.localflow` to `io.github.girzsebastian.localflow`, dropping a company name that was never part of this project. macOS keys permissions on that identifier, so it treats the next build as a new application: grant Accessibility and Microphone one more time under **System Settings → Privacy & Security**, and remove the old LocalFlow entry from the Accessibility list while you are there.
+
+  Your library is not affected. Recordings, transcripts and preferences live under `~/Library/Application Support/LocalFlow/`, a path built from the app's name rather than its identifier.
+
+- The Snippets example no longer carries a personal signature.
+
+
 ## [0.4.0] — 2026-09-10
 
 Mostly internal, with one change users will notice.
