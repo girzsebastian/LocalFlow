@@ -11,7 +11,7 @@
 <!-- Be specific and be honest about what you did NOT check. -->
 
 - [ ] `swift test` passes
-- [ ] [CLA](../CLA.md) signed (a bot will ask on your first pull request)
+- [ ] I have read [CLA.md](../CLA.md) and I accept it for this and my future contributions
 - [ ] Built with `./build.sh` and ran the app
 - Mac and macOS version:
 - Manually verified:

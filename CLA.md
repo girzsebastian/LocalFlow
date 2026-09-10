@@ -122,9 +122,9 @@ agreement is or becomes inaccurate.
 
 ---
 
-**How to sign:** open a pull request. A bot will comment asking you to reply with
-the sentence it gives you. Your signature is recorded in this repository, and you
-only sign once.
+**How you accept:** by opening a pull request. There is no bot, no comment to
+post and nothing to sign — the pull request template asks you to confirm you have
+read this, and submitting it is your acceptance.
 
 *This document is a legal agreement adapted from a standard template. It has not
 been reviewed by a lawyer on behalf of this project. If you are contributing on

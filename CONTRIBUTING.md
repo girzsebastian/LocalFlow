@@ -143,9 +143,9 @@ Do not open a public issue for a security problem. See [SECURITY.md](SECURITY.md
 
 LocalFlow is [MIT](LICENSE) and the application stays free and open.
 
-Before your first pull request is merged you will be asked to sign
-[CLA.md](CLA.md), by posting one comment that a bot gives you. You sign once and
-it covers everything you contribute afterwards.
+**By opening a pull request you accept [CLA.md](CLA.md).** There is nothing to
+sign and no bot to answer — the pull request template asks you to confirm you
+have read it, and that is all.
 
 **You keep the copyright to everything you write.** The agreement grants the
 project a licence, including the right to distribute contributions under terms
