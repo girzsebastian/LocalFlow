@@ -215,7 +215,7 @@ Contributions are welcome and the project is deliberately easy to get running: c
 
 Read [CONTRIBUTING.md](CONTRIBUTING.md) for the setup, the code style, and the one rule that is not negotiable — **speech audio never leaves the machine**. Issues tagged [good first issue](https://github.com/girzsebastian/LocalFlow/labels/good%20first%20issue) are scoped small on purpose; Intel Mac support, extra languages, and a Homebrew cask are all open.
 
-Please also read the [Code of Conduct](CODE_OF_CONDUCT.md). For security problems, do not open a public issue — see [SECURITY.md](SECURITY.md).
+First-time contributors sign a short [CLA](CLA.md) — one comment, once, and you keep the copyright to your work. Please also read the [Code of Conduct](CODE_OF_CONDUCT.md). For security problems, do not open a public issue — see [SECURITY.md](SECURITY.md).
 
 ## License
 
