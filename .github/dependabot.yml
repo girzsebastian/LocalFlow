@@ -1,6 +1,6 @@
 version: 2
 
-# LocalFlow deliberately has no package dependencies — it builds against system
+# Softspoke deliberately has no package dependencies — it builds against system
 # frameworks and shells out to Homebrew binaries. So there is no npm, pip or
 # SwiftPM ecosystem to watch here.
 #

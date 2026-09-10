@@ -1,14 +1,14 @@
-# LocalFlow
+# Softspoke
 
 ### A free, local Wispr Flow alternative for macOS
 
-LocalFlow turns your voice into text in any Mac app. Hold a shortcut, speak, release, and the transcript is inserted where your cursor is. It also records meetings, separates your microphone from computer audio, creates summaries, and lets you chat with the saved discussion.
+Softspoke turns your voice into text in any Mac app. Hold a shortcut, speak, release, and the transcript is inserted where your cursor is. It also records meetings, separates your microphone from computer audio, creates summaries, and lets you chat with the saved discussion.
 
 There is no transcription subscription and no account required. Speech recognition runs locally with Whisper on Apple Silicon. Claude is optional and is used only for the writing and meeting features you choose to run.
 
-[![Download](https://img.shields.io/github/v/release/girzsebastian/LocalFlow?label=download&color=0f766e)](https://github.com/girzsebastian/LocalFlow/releases/latest) [![CI](https://github.com/girzsebastian/LocalFlow/actions/workflows/ci.yml/badge.svg)](https://github.com/girzsebastian/LocalFlow/actions/workflows/ci.yml) [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![macOS](https://img.shields.io/badge/macOS-26%2B-111827?logo=apple)](https://www.apple.com/macos/) [![Swift](https://img.shields.io/badge/Swift-SwiftUI-F05138?logo=swift&logoColor=white)](https://www.swift.org/) [![Whisper](https://img.shields.io/badge/speech-Whisper.cpp-6b46c1)](https://github.com/ggerganov/whisper.cpp) [![Local first](https://img.shields.io/badge/data-local--first-0f766e)](#privacy) [![Stars](https://img.shields.io/github/stars/girzsebastian/LocalFlow?style=flat&color=eab308)](https://github.com/girzsebastian/LocalFlow/stargazers)
+[![Download](https://img.shields.io/github/v/release/girzsebastian/Softspoke?label=download&color=0f766e)](https://github.com/girzsebastian/Softspoke/releases/latest) [![CI](https://github.com/girzsebastian/Softspoke/actions/workflows/ci.yml/badge.svg)](https://github.com/girzsebastian/Softspoke/actions/workflows/ci.yml) [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![macOS](https://img.shields.io/badge/macOS-26%2B-111827?logo=apple)](https://www.apple.com/macos/) [![Swift](https://img.shields.io/badge/Swift-SwiftUI-F05138?logo=swift&logoColor=white)](https://www.swift.org/) [![Whisper](https://img.shields.io/badge/speech-Whisper.cpp-6b46c1)](https://github.com/ggerganov/whisper.cpp) [![Local first](https://img.shields.io/badge/data-local--first-0f766e)](#privacy) [![Stars](https://img.shields.io/github/stars/girzsebastian/Softspoke?style=flat&color=eab308)](https://github.com/girzsebastian/Softspoke/stargazers)
 
-**[⬇ Download for Apple Silicon](https://github.com/girzsebastian/LocalFlow/releases/latest)** · [Build from source](#build-from-source) · [How it works](#how-it-works) · [Contributing](CONTRIBUTING.md)
+**[⬇ Download for Apple Silicon](https://github.com/girzsebastian/Softspoke/releases/latest)** · [Build from source](#build-from-source) · [How it works](#how-it-works) · [Contributing](CONTRIBUTING.md)
 
 <!--
   Screenshots live in docs/images/ and are referenced below; they appear as soon
@@ -17,7 +17,7 @@ There is no transcription subscription and no account required. Speech recogniti
   the selling point. Issue #5.
 -->
 
-![LocalFlow's library of dictations and meeting notes](docs/images/library.png)
+![Softspoke's library of dictations and meeting notes](docs/images/library.png)
 
 ## What it looks like
 
@@ -28,9 +28,9 @@ There is no transcription subscription and no account required. Speech recogniti
 | ![Settings](docs/images/settings.png) | ![The personal dictionary](docs/images/dictionary.png) |
 | Shortcut, audio, privacy and Notetaker behaviour. | Your own vocabulary, so names and jargon come out spelled the way you write them. |
 
-## Why LocalFlow exists
+## Why Softspoke exists
 
-Wispr Flow made system-wide voice typing feel natural, but a subscription is not a good fit for everyone and some workflows need local audio. LocalFlow is an open project built around the same useful idea: a small floating control, a global push-to-talk shortcut, automatic paste into the focused app, personal vocabulary, and a meeting workspace.
+Wispr Flow made system-wide voice typing feel natural, but a subscription is not a good fit for everyone and some workflows need local audio. Softspoke is an open project built around the same useful idea: a small floating control, a global push-to-talk shortcut, automatic paste into the focused app, personal vocabulary, and a meeting workspace.
 
 It is designed for people searching for a **Wispr Flow alternative**, **WisprFlow alternative for Mac**, **offline voice typing**, or a **private local dictation app**.
 
@@ -58,9 +58,9 @@ It is designed for people searching for a **Wispr Flow alternative**, **WisprFlo
 
 The app includes a floating widget, language control, dictionary, snippets, styles, transforms, scratchpad, insights, notifications, calendar reminders, and settings for shortcuts, audio, privacy, and Notetaker behavior.
 
-## LocalFlow compared with Wispr Flow
+## Softspoke compared with Wispr Flow
 
-| Capability | LocalFlow | Wispr Flow |
+| Capability | Softspoke | Wispr Flow |
 | --- | --- | --- |
 | System-wide dictation | Yes | Yes |
 | Push-to-talk and toggle modes | Yes | Yes |
@@ -94,9 +94,9 @@ Notetaker stores local audio and transcript segments. Claude is an optional step
 
 The easiest option is the latest Apple Silicon build:
 
-    Download LocalFlow-macOS-Apple-Silicon.dmg from the latest release
-    Open it and drag LocalFlow onto the Applications shortcut
-    Open /Applications/LocalFlow.app
+    Download Softspoke-macOS-Apple-Silicon.dmg from the latest release
+    Open it and drag Softspoke onto the Applications shortcut
+    Open /Applications/Softspoke.app
 
 Install it into `/Applications` rather than running it from `~/Downloads` — macOS ties the Accessibility grant to where the app lives, so an app left in the Downloads folder loses its shortcut permission on the next update. A `.zip` of the same build is attached to each release for anyone scripting the install.
 
@@ -113,19 +113,19 @@ The build scripts currently expect Apple Silicon Homebrew at **/opt/homebrew/bin
 
 ### 2. Download the speech models
 
-    git clone https://github.com/girzsebastian/LocalFlow.git
-    cd LocalFlow
+    git clone https://github.com/girzsebastian/Softspoke.git
+    cd Softspoke
     ./scripts/download-models.sh
 
-The script downloads the quantized Whisper models from the [whisper.cpp model repository](https://huggingface.co/ggerganov/whisper.cpp), verifies their SHA-256 checksums, and stores them under **~/Library/Application Support/LocalFlow/Models/**.
+The script downloads the quantized Whisper models from the [whisper.cpp model repository](https://huggingface.co/ggerganov/whisper.cpp), verifies their SHA-256 checksums, and stores them under **~/Library/Application Support/Softspoke/Models/**.
 
 ### 3. Build and install
 
     ./build.sh
-    ditto build/LocalFlow.app /Applications/LocalFlow.app
-    open /Applications/LocalFlow.app
+    ditto build/Softspoke.app /Applications/Softspoke.app
+    open /Applications/Softspoke.app
 
-On first launch, allow Microphone access. Add LocalFlow under **System Settings → Privacy & Security → Accessibility** so the global shortcut and automatic paste can work. The first launch may show an unidentified-developer warning because development builds are ad-hoc signed; use **Open Anyway** in Privacy & Security.
+On first launch, allow Microphone access. Add Softspoke under **System Settings → Privacy & Security → Accessibility** so the global shortcut and automatic paste can work. The first launch may show an unidentified-developer warning because development builds are ad-hoc signed; use **Open Anyway** in Privacy & Security.
 
 ### 4. Use it
 
@@ -136,7 +136,7 @@ On first launch, allow Microphone access. Add LocalFlow under **System Settings 
 
 ## Privacy
 
-Speech audio is processed on the Mac by Whisper.cpp. LocalFlow does not require a transcription account, does not send microphone audio to a transcription API, and does not include telemetry. The local Whisper server binds to **127.0.0.1** only.
+Speech audio is processed on the Mac by Whisper.cpp. Softspoke does not require a transcription account, does not send microphone audio to a transcription API, and does not include telemetry. The local Whisper server binds to **127.0.0.1** only.
 
 Claude is an optional separate path. It uses the existing **claude** CLI login for requested summaries, transforms, and meeting questions. Read the prompt and choose the Claude action before sending transcript text to it. If you turn on **Clean up dictation with Claude before pasting**, every dictation transcript is sent to Claude before it is pasted; leave it off if you dictate content that must not leave your Mac.
 
@@ -177,7 +177,7 @@ The code is split into a portable core and a macOS platform layer. **`Sources/Co
     Package.swift                             Builds and tests the core with SwiftPM
     build.sh                                  Native macOS app build and ad-hoc signing
 
-Windows support is [issue #7](https://github.com/girzsebastian/LocalFlow/issues/7). The core and the protocol contract are in place; the Windows implementation is open.
+Windows support is [issue #7](https://github.com/girzsebastian/Softspoke/issues/7). The core and the protocol contract are in place; the Windows implementation is open.
 
 ## Performance
 
@@ -193,7 +193,7 @@ The first model warm-up is slower. Actual timing depends on the Mac, recording l
 
 **The shortcut does nothing**
 
-Confirm LocalFlow is enabled under Accessibility, then restart the app. Secure Input fields such as password prompts can block global keyboard monitoring.
+Confirm Softspoke is enabled under Accessibility, then restart the app. Secure Input fields such as password prompts can block global keyboard monitoring.
 
 **The transcript is copied but not inserted**
 
@@ -201,7 +201,7 @@ The text remains in the clipboard. Re-enable Accessibility and try again; the wi
 
 **The app says the model is missing**
 
-Run **./scripts/download-models.sh** again and verify that both model files are under **~/Library/Application Support/LocalFlow/Models/**.
+Run **./scripts/download-models.sh** again and verify that both model files are under **~/Library/Application Support/Softspoke/Models/**.
 
 **The first dictation is slow**
 
@@ -209,14 +209,14 @@ The local Whisper processes are loading their models. Later phrases reuse the wa
 
 ## Development
 
-    ./build.sh        # builds and ad-hoc signs build/LocalFlow.app
+    ./build.sh        # builds and ad-hoc signs build/Softspoke.app
     swift test        # test suite: no models, no microphone, no network
 
 Run `swift test` before opening a pull request; CI runs it on macOS and again on Windows. See [VALIDATION.md](VALIDATION.md) for the tested flows and the manual checks that still need a human, and [CHANGELOG.md](CHANGELOG.md) for what shipped in each release.
 
 ## Status
 
-LocalFlow is an active personal project. The core dictation and Notetaker flows are usable; automatic call-end detection, cloud team accounts, connector management, screen-share hiding, and signed distribution are still planned.
+Softspoke is an active personal project. The core dictation and Notetaker flows are usable; automatic call-end detection, cloud team accounts, connector management, screen-share hiding, and signed distribution are still planned.
 
 ## Contributing
 
@@ -224,10 +224,10 @@ Contributions are welcome and the project is deliberately easy to get running: c
 
     swift test
 
-Read [CONTRIBUTING.md](CONTRIBUTING.md) for the setup, the code style, and the one rule that is not negotiable — **speech audio never leaves the machine**. Issues tagged [good first issue](https://github.com/girzsebastian/LocalFlow/labels/good%20first%20issue) are scoped small on purpose; Intel Mac support, extra languages, and a Homebrew cask are all open.
+Read [CONTRIBUTING.md](CONTRIBUTING.md) for the setup, the code style, and the one rule that is not negotiable — **speech audio never leaves the machine**. Issues tagged [good first issue](https://github.com/girzsebastian/Softspoke/labels/good%20first%20issue) are scoped small on purpose; Intel Mac support, extra languages, and a Homebrew cask are all open.
 
 First-time contributors sign a short [CLA](CLA.md) — one comment, once, and you keep the copyright to your work. Please also read the [Code of Conduct](CODE_OF_CONDUCT.md). For security problems, do not open a public issue — see [SECURITY.md](SECURITY.md).
 
 ## License
 
-[MIT](LICENSE). Use it, fork it, ship it. If LocalFlow saves you a subscription, a star is a fair trade.
+[MIT](LICENSE). Use it, fork it, ship it. If Softspoke saves you a subscription, a star is a fair trade.

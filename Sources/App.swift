@@ -72,6 +72,11 @@ import UniformTypeIdentifiers
     init() {
         Self.instance = self
         do {
+            // Before anything reads the library: a machine that ran the old
+            // LocalFlow build has it under the old name. Moving it is a rename
+            // on the same volume, so this costs nothing even for a large one,
+            // and it refuses to run if a Softspoke library already exists.
+            try AppPaths.migrateLibraryFromLegacyName()
             try FileManager.default.createDirectory(at: root.appendingPathComponent("Audio"), withIntermediateDirectories: true)
             let file = root.appendingPathComponent("archive.json")
             if FileManager.default.fileExists(atPath: file.path) {
@@ -299,7 +304,7 @@ import UniformTypeIdentifiers
         status = "Starting microphone…"
         Task {
             do {
-                guard await AVCaptureDevice.requestAccess(for: .audio) else { throw flowError("Allow Microphone access for LocalFlow in System Settings → Privacy & Security.") }
+                guard await AVCaptureDevice.requestAccess(for: .audio) else { throw flowError("Allow Microphone access for Softspoke in System Settings → Privacy & Security.") }
                 let id = UUID()
                 let fileName = kind == "Notetaker" ? "\(id)-mic.caf" : "\(id)-dictation.caf"
                 let url = root.appendingPathComponent("Audio/\(fileName)")
@@ -350,7 +355,7 @@ import UniformTypeIdentifiers
         streamingDictationTask?.cancel(); streamingDictationTask = nil
         outputMute.restore()
         releaseTask?.cancel(); releaseTask = nil; gesture.reset(); handsFree = false
-        // Prefer the field active at stop; retain the original field if LocalFlow has focus.
+        // Prefer the field active at stop; retain the original field if Softspoke has focus.
         if target != nil, let frontmost = NSWorkspace.shared.frontmostApplication, frontmost.bundleIdentifier != Bundle.main.bundleIdentifier {
             target = PasteDestination.capture(application: frontmost)
         }
@@ -559,12 +564,12 @@ import UniformTypeIdentifiers
     }
 }
 
-@main struct LocalFlowApp: App {
+@main struct SoftspokeApp: App {
     @StateObject var store = Store()
     @NSApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var body: some Scene {
-        WindowGroup("LocalFlow") { ContentView().environmentObject(store).frame(minWidth: 980, minHeight: 650).onReceive(NotificationCenter.default.publisher(for: NSApplication.willTerminateNotification)) { _ in store.save() } }
-        MenuBarExtra { Button(store.recording ? "Stop recording" : "Dictate · \(store.shortcutName)") { store.toggle(kind: "Dictation") }; Button("Record a note") { store.toggle(kind: "Notetaker") }.disabled(store.recording || store.busy); Divider(); Button("Open LocalFlow") { NSApp.activate(ignoringOtherApps: true); NSApp.windows.first(where: { !($0 is NSPanel) })?.makeKeyAndOrderFront(nil) }; Button("Quit") { NSApp.terminate(nil) }.disabled(store.recording || store.busy) } label: { FlowMenuLabel(store: store, calendar: store.calendar) }
+        WindowGroup("Softspoke") { ContentView().environmentObject(store).frame(minWidth: 980, minHeight: 650).onReceive(NotificationCenter.default.publisher(for: NSApplication.willTerminateNotification)) { _ in store.save() } }
+        MenuBarExtra { Button(store.recording ? "Stop recording" : "Dictate · \(store.shortcutName)") { store.toggle(kind: "Dictation") }; Button("Record a note") { store.toggle(kind: "Notetaker") }.disabled(store.recording || store.busy); Divider(); Button("Open Softspoke") { NSApp.activate(ignoringOtherApps: true); NSApp.windows.first(where: { !($0 is NSPanel) })?.makeKeyAndOrderFront(nil) }; Button("Quit") { NSApp.terminate(nil) }.disabled(store.recording || store.busy) } label: { FlowMenuLabel(store: store, calendar: store.calendar) }
     }
 }
 final class AppDelegate: NSObject, NSApplicationDelegate {

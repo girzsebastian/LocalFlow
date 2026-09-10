@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to LocalFlow are documented here.
+All notable changes to Softspoke are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
@@ -8,9 +8,18 @@ and versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
-- **You will be asked to allow LocalFlow again, once.** The bundle identifier moved from `com.oryntech.localflow` to `io.github.girzsebastian.localflow`, dropping a company name that was never part of this project. macOS keys permissions on that identifier, so it treats the next build as a new application: grant Accessibility and Microphone one more time under **System Settings → Privacy & Security**, and remove the old LocalFlow entry from the Accessibility list while you are there.
+- **LocalFlow is now Softspoke.** The old name was shared with at least eight other GitHub projects doing the same thing, and being descriptive — "local" plus the competitor's product name — it could never have been protected. See [#27](https://github.com/girzsebastian/Softspoke/issues/27).
 
-  Your library is not affected. Recordings, transcripts and preferences live under `~/Library/Application Support/LocalFlow/`, a path built from the app's name rather than its identifier.
+- **Your library moves itself.** On first launch, an existing `~/Library/Application Support/LocalFlow/` is moved to `.../Softspoke/`. It is a rename on the same disk, so it is instant no matter how many recordings you have, and it refuses to run if a Softspoke library already exists rather than merging two libraries silently. If the move fails, nothing is deleted — the old folder stays exactly where it was.
+
+- **You will be asked to allow Softspoke again.** macOS keys permissions on the bundle identifier, which changed with the name. Grant Accessibility and Microphone once more under **System Settings → Privacy & Security**, and remove the stale LocalFlow entry from the Accessibility list while you are there.
+
+
+### Changed
+
+- **You will be asked to allow Softspoke again, once.** The bundle identifier moved from `com.oryntech.softspoke` to `io.github.girzsebastian.softspoke`, dropping a company name that was never part of this project. macOS keys permissions on that identifier, so it treats the next build as a new application: grant Accessibility and Microphone one more time under **System Settings → Privacy & Security**, and remove the old Softspoke entry from the Accessibility list while you are there.
+
+  Your library is not affected. Recordings, transcripts and preferences live under `~/Library/Application Support/Softspoke/`, a path built from the app's name rather than its identifier.
 
 - The Snippets example no longer carries a personal signature.
 
@@ -21,7 +30,7 @@ Mostly internal, with one change users will notice.
 
 ### Added
 
-- **Releases now ship a `.dmg`.** Open it and drag LocalFlow onto the Applications shortcut. Installing into `/Applications` rather than running from `~/Downloads` matters: macOS ties the Accessibility grant to where the app lives, so an app left in Downloads loses its shortcut permission on the next update. The `.zip` is still attached for anyone scripting the install.
+- **Releases now ship a `.dmg`.** Open it and drag Softspoke onto the Applications shortcut. Installing into `/Applications` rather than running from `~/Downloads` matters: macOS ties the Accessibility grant to where the app lives, so an app left in Downloads loses its shortcut permission on the next update. The `.zip` is still attached for anyone scripting the install.
 
 ### Fixed
 
@@ -30,8 +39,8 @@ Mostly internal, with one change users will notice.
 
 ### Changed
 
-- The code is split into `Sources/Core`, which compiles with nothing but Foundation, and `Sources/Platform/macOS`. CI builds the core on a Windows runner so the boundary stays real. Nothing about the macOS app's behaviour changes; this is groundwork for [#7](https://github.com/girzsebastian/LocalFlow/issues/7).
-- Your shortcut is now also recorded in a portable form. LocalFlow used to persist raw Carbon keycodes, which mean nothing on another platform. The new form is written alongside the old one and filled in from the shortcut you already have, so nothing needs re-recording.
+- The code is split into `Sources/Core`, which compiles with nothing but Foundation, and `Sources/Platform/macOS`. CI builds the core on a Windows runner so the boundary stays real. Nothing about the macOS app's behaviour changes; this is groundwork for [#7](https://github.com/girzsebastian/Softspoke/issues/7).
+- Your shortcut is now also recorded in a portable form. Softspoke used to persist raw Carbon keycodes, which mean nothing on another platform. The new form is written alongside the old one and filled in from the shortcut you already have, so nothing needs re-recording.
 - One test suite instead of two, and it runs on every platform. Coverage of the portable core went from 21% to 66%.
 - CodeQL analysis and Dependabot for GitHub Actions.
 
@@ -109,7 +118,7 @@ First public release. Apple Silicon, macOS 26 or newer.
 - Automatic call-end detection, team accounts, connector management, screen-share
   hiding, and signed distribution are not implemented.
 
-[Unreleased]: https://github.com/girzsebastian/LocalFlow/compare/v0.4.0...HEAD
-[0.4.0]: https://github.com/girzsebastian/LocalFlow/releases/tag/v0.4.0
-[0.3.0]: https://github.com/girzsebastian/LocalFlow/releases/tag/v0.3.0
-[0.2.0]: https://github.com/girzsebastian/LocalFlow/releases/tag/v0.2.0
+[Unreleased]: https://github.com/girzsebastian/Softspoke/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/girzsebastian/Softspoke/releases/tag/v0.4.0
+[0.3.0]: https://github.com/girzsebastian/Softspoke/releases/tag/v0.3.0
+[0.2.0]: https://github.com/girzsebastian/Softspoke/releases/tag/v0.2.0

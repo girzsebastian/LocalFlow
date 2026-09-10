@@ -2,14 +2,14 @@
 
 ## Supported versions
 
-LocalFlow is a young project. Only the latest release and `main` receive fixes.
+Softspoke is a young project. Only the latest release and `main` receive fixes.
 
 ## Reporting a vulnerability
 
 **Please do not open a public issue.**
 
 Report privately through GitHub Security Advisories:
-<https://github.com/girzsebastian/LocalFlow/security/advisories/new>
+<https://github.com/girzsebastian/Softspoke/security/advisories/new>
 
 Please include what you can: affected version, macOS version, reproduction
 steps, and the impact you believe it has. You will get an acknowledgement within
@@ -17,7 +17,7 @@ a few days, and credit in the release notes unless you would rather not be named
 
 ## What is in scope
 
-LocalFlow's central promise is that speech audio stays on the machine. Anything
+Softspoke's central promise is that speech audio stays on the machine. Anything
 that breaks that is the highest-severity class of bug here:
 
 - Microphone or system audio, transcripts, or archive contents leaving the Mac
@@ -37,4 +37,4 @@ that breaks that is the highest-severity class of bug here:
 - Whisper model files are downloaded from Hugging Face; `scripts/download-models.sh`
   verifies SHA-256 checksums. Report a checksum mismatch — that one matters.
 - Vulnerabilities in `whisper.cpp`, `ffmpeg`, or the Claude CLI belong upstream,
-  though a heads-up here is welcome if LocalFlow's usage makes them worse.
+  though a heads-up here is welcome if Softspoke's usage makes them worse.

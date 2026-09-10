@@ -41,7 +41,7 @@ struct LocalMeeting: Identifiable { let id: String; let title: String; let start
         meetings = events.events(matching: predicate).filter { !$0.isAllDay && $0.startDate >= now }.sorted { $0.startDate < $1.startDate }.prefix(15).map { LocalMeeting(id: ($0.eventIdentifier ?? UUID().uuidString) + "-\($0.startDate.timeIntervalSince1970)", title: $0.title ?? "Meeting", start: $0.startDate, url: $0.url) }
         guard lead > 0 else { return }
         for meeting in meetings {
-            let key = "localflow-meeting-\(meeting.id)"
+            let key = "softspoke-meeting-\(meeting.id)"
             guard !scheduled.contains(key) else { continue }; scheduled.insert(key)
             let content = UNMutableNotificationContent()
             content.categoryIdentifier = "meeting"
@@ -70,7 +70,7 @@ struct CalendarSettingsView: View {
                     Text("Off").tag(0); Text("15 seconds").tag(15); Text("1 minute").tag(60); Text("5 minutes").tag(300)
                 }
                 Toggle("Show next meeting in the menu bar", isOn: Binding(get: { s.preferences.showNextMeeting ?? false }, set: { s.preferences.showNextMeeting = $0; s.save() }))
-                Text("Reads upcoming events from your Mac’s calendar accounts. LocalFlow does not join calls or modify events automatically.").font(.caption).foregroundStyle(.secondary)
+                Text("Reads upcoming events from your Mac’s calendar accounts. Softspoke does not join calls or modify events automatically.").font(.caption).foregroundStyle(.secondary)
             }.padding(12)
         }
     }

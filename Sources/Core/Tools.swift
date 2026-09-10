@@ -1,6 +1,6 @@
 import Foundation
 
-/// Finds the external binaries LocalFlow shells out to: `ffmpeg`,
+/// Finds the external binaries Softspoke shells out to: `ffmpeg`,
 /// `whisper-server`, `whisper-cli`.
 ///
 /// These used to be hardcoded to `/opt/homebrew/bin`, which is Apple Silicon
@@ -16,7 +16,7 @@ enum Tools {
     /// Searched in order.
     ///
     /// On macOS the Homebrew prefixes come first so behaviour matches what
-    /// LocalFlow has always done, and because a GUI app launched by launchd
+    /// Softspoke has always done, and because a GUI app launched by launchd
     /// inherits a minimal `PATH` — relying on the environment alone would find
     /// nothing. On Windows there is no equivalent convention, so `PATH` is all
     /// there is.

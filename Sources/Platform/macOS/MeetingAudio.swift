@@ -5,7 +5,7 @@ import AVFoundation
 final class MeetingAudio: NSObject, SystemAudioCapture, AudioMixdown, SCStreamOutput, SCStreamDelegate, @unchecked Sendable {
     private var stream: SCStream?
     private var file: AVAudioFile?
-    private let queue = DispatchQueue(label: "LocalFlow.meetingAudio")
+    private let queue = DispatchQueue(label: "Softspoke.meetingAudio")
     private let destination: URL
     private var failure: Error?
     init(destination: URL) { self.destination = destination }

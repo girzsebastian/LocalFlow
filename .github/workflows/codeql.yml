@@ -2,7 +2,7 @@ name: CodeQL
 
 # Static analysis of the Swift itself.
 #
-# LocalFlow has no package dependencies, so dependency scanners have nothing to
+# Softspoke has no package dependencies, so dependency scanners have nothing to
 # read. What it does have is code that holds an Accessibility grant, writes into
 # other applications, shells out to local binaries and runs a localhost server —
 # which is exactly the surface CodeQL is useful on.

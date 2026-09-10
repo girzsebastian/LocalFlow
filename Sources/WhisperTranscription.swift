@@ -14,8 +14,8 @@ actor WhisperTranscription {
         self.detector = detector
     }
     func transcribe(_ source: URL, locale: String, hints: [String] = [], progress: @escaping @Sendable (String) async -> Void) async throws -> String {
-        guard FileManager.default.fileExists(atPath: selectedModel.path) else { throw flowError("The multilingual speech model is missing. Re-run LocalFlow setup.") }
-        let directory = FileManager.default.temporaryDirectory.appendingPathComponent("LocalFlow-\(UUID())")
+        guard FileManager.default.fileExists(atPath: selectedModel.path) else { throw flowError("The multilingual speech model is missing. Re-run Softspoke setup.") }
+        let directory = FileManager.default.temporaryDirectory.appendingPathComponent("Softspoke-\(UUID())")
         try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
         defer { try? FileManager.default.removeItem(at: directory) }
         let wav = directory.appendingPathComponent("audio.wav")

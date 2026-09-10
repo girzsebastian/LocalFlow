@@ -48,7 +48,7 @@ struct InsightsView: View {
                         metric("Words per minute", value: summary.wordsPerMinute.map(String.init) ?? "—", icon: "speedometer")
                         metric("Current streak", value: "\(summary.currentStreak) days", icon: "flame")
                     }
-                    Text("Counts come from your LocalFlow library. Speaking speed uses recordings with measured duration; earlier recordings may not have it.").font(.caption).foregroundStyle(.secondary)
+                    Text("Counts come from your Softspoke library. Speaking speed uses recordings with measured duration; earlier recordings may not have it.").font(.caption).foregroundStyle(.secondary)
                     GroupBox("Recent activity · 6 weeks") {
                         LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 6), count: 14), spacing: 6) {
                             ForEach(0..<42, id: \.self) { index in

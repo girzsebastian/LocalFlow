@@ -1,8 +1,8 @@
 blank_issues_enabled: true
 contact_links:
   - name: Question or idea
-    url: https://github.com/girzsebastian/LocalFlow/discussions
+    url: https://github.com/girzsebastian/Softspoke/discussions
     about: Ask how something works, share a workflow, or float an idea before opening an issue.
   - name: Security vulnerability
-    url: https://github.com/girzsebastian/LocalFlow/security/advisories/new
+    url: https://github.com/girzsebastian/Softspoke/security/advisories/new
     about: Report privately. Please do not open a public issue for security problems.

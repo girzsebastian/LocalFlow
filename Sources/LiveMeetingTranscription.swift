@@ -11,7 +11,7 @@ actor LiveMeetingTranscription {
             throw flowError("The small live-transcript model is missing. The final meeting recording is still safe.")
         }
         guard FileManager.default.fileExists(atPath: source.path), duration >= 1 else { return .silence }
-        let directory = FileManager.default.temporaryDirectory.appendingPathComponent("LocalFlow-Live-\(UUID())")
+        let directory = FileManager.default.temporaryDirectory.appendingPathComponent("Softspoke-Live-\(UUID())")
         try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
         defer { try? FileManager.default.removeItem(at: directory) }
         let wav = directory.appendingPathComponent("chunk.wav")

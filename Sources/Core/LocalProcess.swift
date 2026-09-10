@@ -30,7 +30,7 @@ final class LocalProcess: @unchecked Sendable {
             try await withCheckedThrowingContinuation { continuation in
                 DispatchQueue.global(qos: .userInitiated).async {
                     let task = Process()
-                    let log = FileManager.default.temporaryDirectory.appendingPathComponent("localflow-process-\(UUID()).log")
+                    let log = FileManager.default.temporaryDirectory.appendingPathComponent("softspoke-process-\(UUID()).log")
                     FileManager.default.createFile(atPath: log.path, contents: nil)
                     defer { try? FileManager.default.removeItem(at: log) }
                     do {

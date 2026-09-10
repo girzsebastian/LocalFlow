@@ -3,7 +3,7 @@
 ## Our pledge
 
 We as members, contributors, and maintainers pledge to make participation in the
-LocalFlow project a harassment-free experience for everyone, regardless of age,
+Softspoke project a harassment-free experience for everyone, regardless of age,
 body size, visible or invisible disability, ethnicity, sex characteristics,
 gender identity and expression, level of experience, education, socio-economic
 status, nationality, personal appearance, race, religion, or sexual identity and
@@ -35,7 +35,7 @@ contributions that are not aligned with this Code of Conduct.
 
 Report abusive, harassing, or otherwise unacceptable behaviour to the maintainer
 privately through
-[GitHub Security Advisories](https://github.com/girzsebastian/LocalFlow/security/advisories/new)
+[GitHub Security Advisories](https://github.com/girzsebastian/Softspoke/security/advisories/new)
 (the report stays private even when the subject is conduct rather than a
 vulnerability), or by contacting [@girzsebastian](https://github.com/girzsebastian)
 on GitHub. All complaints will be reviewed and investigated promptly and fairly,

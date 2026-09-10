@@ -2,7 +2,7 @@ name: CLA
 
 # Records that contributors have signed CLA.md before their work is merged.
 #
-# This is not bureaucracy for its own sake. LocalFlow is MIT and the app stays
+# This is not bureaucracy for its own sake. Softspoke is MIT and the app stays
 # free, but server-backed features may one day be offered under different terms.
 # Changing licensing needs permission from every copyright holder, and a project
 # that collects contributions without an agreement can never get it — twenty
@@ -34,14 +34,14 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           path-to-signatures: .github/cla-signatures.json
-          path-to-document: https://github.com/girzsebastian/LocalFlow/blob/main/CLA.md
+          path-to-document: https://github.com/girzsebastian/Softspoke/blob/main/CLA.md
           branch: main
           # Dependabot bumps version strings and github-actions writes the
           # signature file itself; neither carries authorship to license.
           allowlist: girzsebastian,dependabot[bot],github-actions[bot]
           custom-notsigned-prcomment: >
             Thanks for the pull request. Before it can be merged, please read
-            [CLA.md](https://github.com/girzsebastian/LocalFlow/blob/main/CLA.md)
+            [CLA.md](https://github.com/girzsebastian/Softspoke/blob/main/CLA.md)
             and sign by posting the comment below. You keep the copyright to
             everything you write — this grants a licence so the project can offer
             server-backed features under different terms later without needing to

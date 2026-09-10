@@ -10,7 +10,7 @@ struct ContentView: View {
     var body: some View {
         HStack(spacing: 0) {
             VStack(alignment: .leading, spacing: 8) {
-                HStack { Image(systemName: "waveform.circle.fill").font(.largeTitle).foregroundStyle(.mint); Text("LocalFlow").font(.title2.bold()) }.padding(.vertical, 22)
+                HStack { Image(systemName: "waveform.circle.fill").font(.largeTitle).foregroundStyle(.mint); Text("Softspoke").font(.title2.bold()) }.padding(.vertical, 22)
                 Text("YOUR VOICE, YOUR WORKSPACE").font(.system(size: 9, weight: .bold)).foregroundStyle(.secondary).padding(.bottom, 14)
                 ForEach(pages, id: \.0) { page in
                     Button { s.page = page.0; s.selection = nil } label: {
@@ -47,7 +47,7 @@ struct ContentView: View {
         case "Dictation": "Speak naturally. Keep your words close."
         case "Notetaker": "A home for conversations, ideas, and next steps."
         case "Scratchpad": "A little space to think out loud."
-        case "Settings": "Make LocalFlow feel like yours."
+        case "Settings": "Make Softspoke feel like yours."
         default: "Small tools for the way you work."
         }
     }

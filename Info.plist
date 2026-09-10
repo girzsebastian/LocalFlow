@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0"><dict>
-<key>CFBundleExecutable</key><string>LocalFlow</string>
-<key>CFBundleIdentifier</key><string>io.github.girzsebastian.localflow</string>
-<key>CFBundleName</key><string>LocalFlow</string>
+<key>CFBundleExecutable</key><string>Softspoke</string>
+<key>CFBundleIdentifier</key><string>io.github.girzsebastian.softspoke</string>
+<key>CFBundleName</key><string>Softspoke</string>
 <key>CFBundlePackageType</key><string>APPL</string>
 <key>CFBundleShortVersionString</key><string>0.4.0</string>
 <key>CFBundleVersion</key><string>4</string>
@@ -11,6 +11,6 @@
 <key>NSMicrophoneUsageDescription</key><string>Record your dictation and meeting notes on your Mac.</string>
 <key>NSSpeechRecognitionUsageDescription</key><string>Transcribe your recordings into text.</string>
 <key>NSAudioCaptureUsageDescription</key><string>Capture meeting audio for your local notes.</string>
-<key>NSCalendarsFullAccessUsageDescription</key><string>Show upcoming meetings and remind you when to start a note. LocalFlow only reads events.</string>
+<key>NSCalendarsFullAccessUsageDescription</key><string>Show upcoming meetings and remind you when to start a note. Softspoke only reads events.</string>
 <key>NSHighResolutionCapable</key><true/>
 </dict></plist>

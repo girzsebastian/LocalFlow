@@ -9,7 +9,7 @@ xcuserdata/
 build/
 *.app/
 
-# LocalFlow runtime data and speech models
+# Softspoke runtime data and speech models
 Audio/
 Models/
 diagnostics.json

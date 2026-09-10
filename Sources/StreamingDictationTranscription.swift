@@ -9,7 +9,7 @@ actor StreamingDictationTranscription {
 
     func transcribe(source: URL, start: Double, duration: Double, locale: String, hints: [String]) async throws -> String {
         guard duration >= 0.5 else { return "" }
-        let directory = FileManager.default.temporaryDirectory.appendingPathComponent("LocalFlow-Streaming-\(UUID())")
+        let directory = FileManager.default.temporaryDirectory.appendingPathComponent("Softspoke-Streaming-\(UUID())")
         try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
         defer { try? FileManager.default.removeItem(at: directory) }
         let chunk = directory.appendingPathComponent("phrase.wav")

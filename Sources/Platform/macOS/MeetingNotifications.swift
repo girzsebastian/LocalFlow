@@ -34,7 +34,7 @@ import UserNotifications
                     let bundle = app.bundleIdentifier ?? ""
                     if MeetingWindowMatcher.matches(bundle: bundle, title: title), Date().timeIntervalSince(lastPrompt[bundle] ?? .distantPast) > 1800 {
                         lastPrompt[bundle] = Date()
-                        send(id: "localflow-call-\(bundle)", title: "Taking notes for this meeting?", body: "A meeting window is open in \(app.localizedName ?? "your app"). With participants’ consent, start Notetaker or press Option M.", category: "meeting")
+                        send(id: "softspoke-call-\(bundle)", title: "Taking notes for this meeting?", body: "A meeting window is open in \(app.localizedName ?? "your app"). With participants’ consent, start Notetaker or press Option M.", category: "meeting")
                     }
                 }
             }
@@ -45,7 +45,7 @@ import UserNotifications
             let previous = defaults.object(forKey: "lastRecommendationDate") as? Date ?? .distantPast
             if Date().timeIntervalSince(previous) > 7 * 86400 {
                 defaults.set(Date(), forKey: "lastRecommendationDate")
-                send(id: "localflow-recommendation", title: "Make recurring phrases quicker", body: "Add names to Dictionary and reusable phrases to Snippets. You can also choose English, Romanian or Multilingual from the widget.")
+                send(id: "softspoke-recommendation", title: "Make recurring phrases quicker", body: "Add names to Dictionary and reusable phrases to Snippets. You can also choose English, Romanian or Multilingual from the widget.")
             }
         }
     }

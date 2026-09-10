@@ -73,7 +73,7 @@ struct NoteExchange: Codable, Identifiable, Equatable {
     var answer: String
 }
 struct Archive: Codable { var entries: [Entry]; var preferences: Preferences }
-func flowError(_ message: String) -> NSError { NSError(domain: "LocalFlow", code: 1, userInfo: [NSLocalizedDescriptionKey: message]) }
+func flowError(_ message: String) -> NSError { NSError(domain: "Softspoke", code: 1, userInfo: [NSLocalizedDescriptionKey: message]) }
 
 /// Optional Claude pass that turns a literal dictation into the message the
 /// speaker meant: fillers removed, spoken self-corrections applied.

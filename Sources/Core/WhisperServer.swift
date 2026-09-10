@@ -41,10 +41,10 @@ actor WhisperServer {
         }
         try stopProcess()
         guard FileManager.default.fileExists(atPath: model.path) else {
-            throw flowError("The multilingual speech model is missing. Re-run LocalFlow setup.")
+            throw flowError("The multilingual speech model is missing. Re-run Softspoke setup.")
         }
 
-        let log = FileManager.default.temporaryDirectory.appendingPathComponent("LocalFlow-whisper-server-\(ProcessInfo.processInfo.processIdentifier)-\(port).log")
+        let log = FileManager.default.temporaryDirectory.appendingPathComponent("Softspoke-whisper-server-\(ProcessInfo.processInfo.processIdentifier)-\(port).log")
         FileManager.default.createFile(atPath: log.path, contents: nil)
         let handle = try FileHandle(forWritingTo: log)
         let task = Process()
@@ -125,7 +125,7 @@ actor WhisperServer {
         var request = URLRequest(url: URL(string: "http://127.0.0.1:\(port)/inference")!)
         request.httpMethod = "POST"
         request.timeoutInterval = 180
-        let boundary = "LocalFlow-\(UUID().uuidString)"
+        let boundary = "Softspoke-\(UUID().uuidString)"
         request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         let audio = try Data(contentsOf: file)

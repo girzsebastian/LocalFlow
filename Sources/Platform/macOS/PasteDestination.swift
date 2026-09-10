@@ -13,7 +13,7 @@ import AppKit
         return PasteDestination(application: application, element: element)
     }
     func insert(_ text: String) async throws -> String {
-        guard AXIsProcessTrusted() else { throw flowError("Transcript copied. Enable LocalFlow in System Settings → Privacy & Security → Accessibility, then try again.") }
+        guard AXIsProcessTrusted() else { throw flowError("Transcript copied. Enable Softspoke in System Settings → Privacy & Security → Accessibility, then try again.") }
         guard !application.isTerminated else { throw flowError("The original app closed. Your transcript is copied; paste it wherever you need.") }
         application.activate(options: [.activateAllWindows])
         for _ in 0..<20 {

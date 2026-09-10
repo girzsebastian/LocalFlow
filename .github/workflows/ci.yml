@@ -32,9 +32,9 @@ jobs:
 
       - name: Verify the bundle
         run: |
-          test -x build/LocalFlow.app/Contents/MacOS/LocalFlow
-          plutil -lint build/LocalFlow.app/Contents/Info.plist
-          codesign --verify --verbose build/LocalFlow.app
+          test -x build/Softspoke.app/Contents/MacOS/Softspoke
+          plutil -lint build/Softspoke.app/Contents/Info.plist
+          codesign --verify --verbose build/Softspoke.app
 
       # macOS keys the Accessibility grant on the bundle identifier together
       # with the signature's designated requirement. If the two drift apart,
@@ -44,14 +44,14 @@ jobs:
         run: |
           plist=$(/usr/libexec/PlistBuddy -c "Print CFBundleIdentifier" Info.plist)
           script=$(grep -o 'identifier "[^"]*"' build.sh | sed 's/identifier "//; s/"//')
-          signed=$(codesign -d -r- build/LocalFlow.app 2>&1 | grep -o 'identifier "[^"]*"' | sed 's/identifier "//; s/"//')
+          signed=$(codesign -d -r- build/Softspoke.app 2>&1 | grep -o 'identifier "[^"]*"' | sed 's/identifier "//; s/"//')
           echo "Info.plist: $plist"
           echo "build.sh:   $script"
           echo "signature:  $signed"
           test "$plist" = "$script" && test "$plist" = "$signed"
 
   core-windows:
-    # LocalFlow has no Windows app yet. What this job proves is that the
+    # Softspoke has no Windows app yet. What this job proves is that the
     # portable half stays portable: the moment someone reaches for an Apple
     # framework inside Sources/Core, this build goes red on the pull request
     # rather than months later when a Windows port is attempted.

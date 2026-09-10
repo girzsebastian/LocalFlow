@@ -1,6 +1,6 @@
-# LocalFlow Contributor License Agreement
+# Softspoke Contributor License Agreement
 
-Thank you for contributing to LocalFlow.
+Thank you for contributing to Softspoke.
 
 This agreement is adapted from the [Apache Software Foundation Individual
 Contributor License Agreement v2.0](https://www.apache.org/licenses/icla.pdf),
@@ -13,7 +13,7 @@ not transfer ownership.
 
 ## Why this exists
 
-LocalFlow is MIT licensed and the application will stay free and open. But
+Softspoke is MIT licensed and the application will stay free and open. But
 features that need a server — syncing your dictionary between machines, shared
 team vocabularies — may one day be offered under different terms to fund the
 work.
@@ -49,7 +49,7 @@ authorship.
 ## Agreement
 
 By signing, you accept the terms below for your past and future contributions to
-LocalFlow.
+Softspoke.
 
 ### 1. Definitions
 
@@ -57,13 +57,13 @@ LocalFlow.
 whose behalf it is signed.
 
 **"Contribution"** means any original work of authorship, including any changes
-or additions to existing work, that you intentionally submit to LocalFlow.
+or additions to existing work, that you intentionally submit to Softspoke.
 "Submit" means any form of communication sent to the project or its maintainers,
 including pull requests, patches, and issue comments containing code, but
 excluding anything you clearly mark **"Not a Contribution."**
 
-**"Project"** means the LocalFlow repository at
-https://github.com/girzsebastian/LocalFlow and its maintainer.
+**"Project"** means the Softspoke repository at
+https://github.com/girzsebastian/Softspoke and its maintainer.
 
 ### 2. Copyright licence
 

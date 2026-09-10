@@ -2,7 +2,7 @@ import AppKit
 import AVFoundation
 import ServiceManagement
 
-// The small OS services LocalFlow needs, each behind its protocol from
+// The small OS services Softspoke needs, each behind its protocol from
 // Sources/Core/PlatformCapabilities.swift.
 //
 // These were previously one-line calls scattered through App.swift —
@@ -23,7 +23,7 @@ import ServiceManagement
     }
 }
 
-/// Accessibility on macOS: the grant that lets LocalFlow watch a global
+/// Accessibility on macOS: the grant that lets Softspoke watch a global
 /// shortcut and write text into another application.
 @MainActor final class MacAutomationPermission: AutomationPermission {
     private var timer: Timer?
@@ -148,7 +148,7 @@ struct MacAudioDevices: AudioDevices {
 
 /// The microphone, behind `MicrophoneRecorder`.
 ///
-/// The format is LocalFlow's choice rather than the caller's: 48 kHz mono
+/// The format is Softspoke's choice rather than the caller's: 48 kHz mono
 /// 16-bit linear PCM is what whisper.cpp wants, and letting a caller pick would
 /// only invite a mismatch further down the pipeline.
 @MainActor final class MacMicrophoneRecorder: MicrophoneRecorder {

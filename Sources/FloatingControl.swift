@@ -92,7 +92,7 @@ struct FloatingView: View {
         Group {
             if appearance.collapsed {
                 Capsule().fill(Color.gray.opacity(0.55)).frame(width: 5, height: 38)
-                    .frame(width: 10, height: 48).help("LocalFlow · move here to dictate")
+                    .frame(width: 10, height: 48).help("Softspoke · move here to dictate")
             } else {
                 controls.frame(width: s.recording || s.busy || s.error != nil || s.widgetNotice != nil || s.correctionSuggestion != nil ? 280 : 48, height: 184, alignment: .leading)
             }
@@ -118,7 +118,7 @@ struct FloatingView: View {
                 VStack(alignment: .leading, spacing: 7) {
                     HStack(spacing: 7) {
                         Circle().fill(s.recording ? Color.red : .mint).frame(width: 5, height: 5)
-                        Text(s.recording ? (s.handsFree ? "Hands-free" : "Listening") : s.busy ? "Processing" : s.error != nil ? "Needs attention" : s.correctionSuggestion != nil ? "Learn this correction?" : "LocalFlow").font(.system(size: 11, weight: .medium))
+                        Text(s.recording ? (s.handsFree ? "Hands-free" : "Listening") : s.busy ? "Processing" : s.error != nil ? "Needs attention" : s.correctionSuggestion != nil ? "Learn this correction?" : "Softspoke").font(.system(size: 11, weight: .medium))
                         Spacer()
                         if s.recording { TimelineView(.periodic(from: .now, by: 1)) { context in Text(String(format: "%02d:%02d", Int(context.date.timeIntervalSince(s.started ?? context.date)) / 60, Int(context.date.timeIntervalSince(s.started ?? context.date)) % 60)).font(.system(size: 10, design: .monospaced)) } }
                     }

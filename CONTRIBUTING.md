@@ -1,6 +1,6 @@
-# Contributing to LocalFlow
+# Contributing to Softspoke
 
-Thanks for taking the time. LocalFlow is a small, dependency-light macOS app, and
+Thanks for taking the time. Softspoke is a small, dependency-light macOS app, and
 it is deliberately easy to get running — you should be building and testing it
 within a few minutes.
 
@@ -21,8 +21,8 @@ within a few minutes.
 
     xcode-select --install
     brew install ffmpeg whisper-cpp
-    git clone https://github.com/girzsebastian/LocalFlow.git
-    cd LocalFlow
+    git clone https://github.com/girzsebastian/Softspoke.git
+    cd Softspoke
     ./scripts/download-models.sh   # one time, ~1.5 GB
 
 You need macOS 26 or newer and an Apple Silicon Mac. The build scripts currently
@@ -32,8 +32,8 @@ welcome contribution.
 ## Build and run
 
     ./build.sh
-    ditto build/LocalFlow.app /Applications/LocalFlow.app
-    open /Applications/LocalFlow.app
+    ditto build/Softspoke.app /Applications/Softspoke.app
+    open /Applications/Softspoke.app
 
 `build.sh` prints the path of the bundle it produced. It pins the ad-hoc
 signature to a stable designated requirement so macOS does not drop your
@@ -100,7 +100,7 @@ Match the file you are editing. In practice that means:
   the designated requirement is the model to follow: it records a non-obvious
   reason a future reader would otherwise undo.
 - No force-unwrapping in code paths a user can reach.
-- User-facing strings are plain and specific. LocalFlow tells the user what
+- User-facing strings are plain and specific. Softspoke tells the user what
   failed and what to do; it does not say "Something went wrong".
 
 ## Pull requests
@@ -121,18 +121,18 @@ as an issue.
 - Intel Mac and non-`/opt/homebrew` support in `build.sh` and
   `scripts/download-models.sh`.
 - Additional languages beyond English and Romanian in the language router.
-- A Homebrew cask so `brew install --cask localflow` works.
+- A Homebrew cask so `brew install --cask softspoke` works.
 - Accessibility of the main window: VoiceOver labels, keyboard navigation.
 - Anything in the **Status** section of the README that is still marked planned.
 
-Issues tagged [`good first issue`](https://github.com/girzsebastian/LocalFlow/labels/good%20first%20issue)
+Issues tagged [`good first issue`](https://github.com/girzsebastian/Softspoke/labels/good%20first%20issue)
 are scoped small on purpose.
 
 ## Reporting bugs
 
 Use the issue templates. A dictation bug is much easier to fix with the macOS
 version, the Mac model, the language mode, and whether Accessibility was granted.
-Never paste a transcript containing anything private — LocalFlow exists so that
+Never paste a transcript containing anything private — Softspoke exists so that
 text stays yours.
 
 ## Security
@@ -141,7 +141,7 @@ Do not open a public issue for a security problem. See [SECURITY.md](SECURITY.md
 
 ## License and the CLA
 
-LocalFlow is [MIT](LICENSE) and the application stays free and open.
+Softspoke is [MIT](LICENSE) and the application stays free and open.
 
 Before your first pull request is merged you will be asked to sign
 [CLA.md](CLA.md), by posting one comment that a bot gives you. You sign once and

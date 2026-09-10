@@ -2,7 +2,7 @@
 set -euo pipefail
 
 USER_HOME="${HOME}"
-MODELS_DIR="${USER_HOME}/Library/Application Support/LocalFlow/Models"
+MODELS_DIR="${USER_HOME}/Library/Application Support/Softspoke/Models"
 BASE_URL="https://huggingface.co/ggerganov/whisper.cpp/resolve/main"
 
 mkdir -p "${MODELS_DIR}"

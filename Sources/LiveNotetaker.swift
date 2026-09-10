@@ -158,7 +158,7 @@ struct LiveNotetakerView: View {
                     }
                 }.padding(18).frame(minWidth: 330)
             }
-            Text("Live text uses a faster local model. After Stop, LocalFlow runs the larger accuracy model over the saved recording.").font(.caption2).foregroundStyle(.secondary).padding(10)
+            Text("Live text uses a faster local model. After Stop, Softspoke runs the larger accuracy model over the saved recording.").font(.caption2).foregroundStyle(.secondary).padding(10)
         }
     }
     func ask() { let value = question; question = ""; s.askMeeting(id, question: value) }

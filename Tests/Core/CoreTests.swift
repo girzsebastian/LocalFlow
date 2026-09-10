@@ -1,7 +1,7 @@
 import XCTest
-@testable import LocalFlowCore
+@testable import SoftspokeCore
 
-/// Tests for the portable half of LocalFlow. These run on every platform Swift
+/// Tests for the portable half of Softspoke. These run on every platform Swift
 /// supports, including Windows, which is the point: they are how a Windows
 /// build is verified before a Windows UI exists.
 ///
@@ -225,12 +225,12 @@ final class CoreTests: XCTestCase {
         // Asserted as a relationship rather than an absolute string: this runs
         // on macOS, where URL(fileURLWithPath:) reads "C:/..." as relative
         // because it has no leading slash. The logic under test is "append
-        // LocalFlow to %APPDATA%", not how Foundation parses a drive letter.
+        // Softspoke to %APPDATA%", not how Foundation parses a drive letter.
         let appData = "/fake/AppData/Roaming"
         let root = AppPaths.root(platform: .windows,
                                  environment: ["APPDATA": appData],
                                  home: fakeHome)
-        XCTAssertEqual(root.lastPathComponent, "LocalFlow")
+        XCTAssertEqual(root.lastPathComponent, "Softspoke")
         XCTAssertEqual(root.deletingLastPathComponent().path, appData)
         XCTAssertFalse(root.path.contains("Library"), "the macOS layout must not leak in")
     }
@@ -239,12 +239,12 @@ final class CoreTests: XCTestCase {
         // A service or a stripped environment may not set %APPDATA%; guessing
         // the conventional location beats writing to the wrong place.
         let root = AppPaths.root(platform: .windows, environment: [:], home: fakeHome)
-        XCTAssertEqual(root.path, "/Users/test/AppData/Roaming/LocalFlow")
+        XCTAssertEqual(root.path, "/Users/test/AppData/Roaming/Softspoke")
     }
 
     func testMacDataStaysWhereItAlwaysWas() {
         let root = AppPaths.root(platform: .apple, environment: ["APPDATA": "ignored"], home: fakeHome)
-        XCTAssertEqual(root.path, "/Users/test/Library/Application Support/LocalFlow",
+        XCTAssertEqual(root.path, "/Users/test/Library/Application Support/Softspoke",
                        "%APPDATA% must not leak into the macOS layout and move an existing library")
     }
 
@@ -257,6 +257,87 @@ final class CoreTests: XCTestCase {
                                                 home: fakeHome)
         XCTAssertEqual(windows.path, "/fake/AppData/Roaming/npm/claude.cmd",
                        "npm installs the CLI as a .cmd shim, not a bare executable")
+    }
+
+    // MARK: Migrating a library from before the rename
+    //
+    // These use real directories in a temporary location, because the whole
+    // point is whether the filesystem operation behaves — a mocked FileManager
+    // would prove nothing about the case that matters.
+
+    private func makeSandbox() throws -> URL {
+        let box = FileManager.default.temporaryDirectory
+            .appendingPathComponent("softspoke-migration-\(UUID())")
+        try FileManager.default.createDirectory(at: box, withIntermediateDirectories: true)
+        return box
+    }
+
+    private func writeLibrary(at url: URL, marker: String) throws {
+        try FileManager.default.createDirectory(at: url, withIntermediateDirectories: true)
+        try marker.write(to: url.appendingPathComponent("archive.json"), atomically: true, encoding: .utf8)
+    }
+
+    func testALibraryFromTheOldNameIsMoved() throws {
+        let home = try makeSandbox()
+        defer { try? FileManager.default.removeItem(at: home) }
+        let legacy = AppPaths.legacyRoot(platform: .apple, environment: [:], home: home)
+        try writeLibrary(at: legacy, marker: "fifty-three entries")
+
+        let moved = try AppPaths.migrateLibraryFromLegacyName(platform: .apple, environment: [:], home: home)
+        XCTAssertTrue(moved)
+
+        let current = AppPaths.root(platform: .apple, environment: [:], home: home)
+        XCTAssertEqual(try String(contentsOf: current.appendingPathComponent("archive.json"), encoding: .utf8),
+                       "fifty-three entries",
+                       "the library must arrive intact, not merely exist")
+        XCTAssertFalse(FileManager.default.fileExists(atPath: legacy.path),
+                       "a move leaves nothing behind; a copy would double an 800MB library")
+    }
+
+    func testAnExistingLibraryIsNeverOverwritten() throws {
+        let home = try makeSandbox()
+        defer { try? FileManager.default.removeItem(at: home) }
+        let legacy = AppPaths.legacyRoot(platform: .apple, environment: [:], home: home)
+        let current = AppPaths.root(platform: .apple, environment: [:], home: home)
+        try writeLibrary(at: legacy, marker: "old")
+        try writeLibrary(at: current, marker: "current")
+
+        let moved = try AppPaths.migrateLibraryFromLegacyName(platform: .apple, environment: [:], home: home)
+        XCTAssertFalse(moved, "merging two libraries is not something to do silently")
+        XCTAssertEqual(try String(contentsOf: current.appendingPathComponent("archive.json"), encoding: .utf8),
+                       "current",
+                       "the library in use must survive untouched")
+        XCTAssertTrue(FileManager.default.fileExists(atPath: legacy.path),
+                      "and the old one is left for the user to deal with, not deleted")
+    }
+
+    func testMigrationIsAQuietNoOpWithNothingToMove() throws {
+        let home = try makeSandbox()
+        defer { try? FileManager.default.removeItem(at: home) }
+        XCTAssertFalse(try AppPaths.migrateLibraryFromLegacyName(platform: .apple, environment: [:], home: home),
+                       "a fresh install has no legacy directory and must not fail")
+    }
+
+    func testMigrationRunsOnlyOnce() throws {
+        let home = try makeSandbox()
+        defer { try? FileManager.default.removeItem(at: home) }
+        try writeLibrary(at: AppPaths.legacyRoot(platform: .apple, environment: [:], home: home), marker: "x")
+
+        XCTAssertTrue(try AppPaths.migrateLibraryFromLegacyName(platform: .apple, environment: [:], home: home))
+        XCTAssertFalse(try AppPaths.migrateLibraryFromLegacyName(platform: .apple, environment: [:], home: home),
+                       "every launch after the first must take the no-op path")
+    }
+
+    func testWindowsLibrariesMigrateToo() throws {
+        let home = try makeSandbox()
+        defer { try? FileManager.default.removeItem(at: home) }
+        let appData = home.appendingPathComponent("Roaming")
+        let environment = ["APPDATA": appData.path]
+        try writeLibrary(at: AppPaths.legacyRoot(platform: .windows, environment: environment, home: home), marker: "w")
+
+        XCTAssertTrue(try AppPaths.migrateLibraryFromLegacyName(platform: .windows, environment: environment, home: home))
+        let current = AppPaths.root(platform: .windows, environment: environment, home: home)
+        XCTAssertEqual(try String(contentsOf: current.appendingPathComponent("archive.json"), encoding: .utf8), "w")
     }
 
     // MARK: Locating external tools
